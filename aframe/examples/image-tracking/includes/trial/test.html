@@ -1,0 +1,62 @@
+<!doctype HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+</head>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+<!-- import events.js script -->
+<script src="events-solo.js"></script>
+
+<body style='margin : 0px; overflow: hidden;'>
+<!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+<a-scene embedded vr-mode-ui="enabled: false" arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+
+    <a-assets>
+        <a-asset-item id="animated-asset" src="../book location.glb"></a-asset-item>
+    </a-assets>
+    <a-assets>
+        <a-asset-item id="animated-asset2" src="../similar books.glb"></a-asset-item>
+    </a-assets>
+    <a-assets>
+        <a-asset-item id="animated-asset3" src="../book information.glb"></a-asset-item>
+    </a-assets>
+
+    <!-- NFT marker definition -->
+    <!-- Replace 'your-custom-nft-type' with the appropriate type for your custom NFT -->
+    <a-nft 
+        type='nft' url='./aframe/examples/image-tracking/nft2/book/book-image/book'
+        smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
+
+        <!-- Entity displaying the 3D model -->
+        <!-- Replace './path-to-your-custom-3d-model' with the path to your custom 3D model -->
+        <a-entity
+            id="animated-model"
+            gltf-model="#animated-asset"
+            scale="0.2 0.3 0.2"
+            rotation="0 -90 0"
+            position="-1 0 0"> <!-- Adjust the position here -->
+        </a-entity>
+        <a-entity
+            id="animated-model2"
+            gltf-model="#animated-asset2"
+            scale="0.2 0.3 0.2"
+            rotation="0 -90 0"
+            position="2 0 0"> <!-- Adjust the position here -->
+        </a-entity>
+        <a-entity
+            id="animated-model3"
+            gltf-model="#animated-asset3"
+            scale="0.2 0.3 0.2"
+            rotation="0 -90 0"
+            position="0.5 0 -1.5"> <!--  Adjust the position here -->
+        </a-entity>
+    </a-nft>
+
+    <a-entity camera></a-entity>
+</a-scene>
+</body>
+</html>

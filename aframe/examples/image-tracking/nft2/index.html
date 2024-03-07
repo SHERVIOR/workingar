@@ -1,5 +1,4 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.3.0/dist/aframe-master.min.js"></script>
-
 <style>
   .arjs-loader {
     height: 100%;
@@ -13,44 +12,36 @@
     justify-content: center;
     align-items: center;
   }
-
   .arjs-loader div {
     text-align: center;
     font-size: 1.25em;
     color: white;
   }
 </style>
-
 <!-- Load AR.js NFT extension -->
 <script src='../../../../aframe/build/aframe-ar-nft.js'></script>
-
 <body style='margin : 0px; overflow: hidden;'>
   <!-- Show loader until image descriptors are loaded -->
   <div class="arjs-loader">
     <div>Loading, please wait...</div>
   </div>
   <!-- AR scene -->
-  <a-scene
-    vr-mode-ui='enabled: false;'
-    renderer="logarithmicDepthBuffer: true; precision: medium;"
-    embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: true;'>
+  <a-scene vr-mode-ui='enabled: false;' renderer="logarithmicDepthBuffer: true; precision: medium;" embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: true;'>
+    <!-- Camera -->
+    <a-entity id="camera" camera position="0 1.6 0"></a-entity>
 
     <!-- NFT marker definition -->
-    <a-nft
-      type='nft' url='./aframe/examples/image-tracking/nft2/book/book-image/book'
-      smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
-
+    <a-nft type='nft' url='./aframe/examples/image-tracking/nft2/book/book-image/book' smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
       <!-- Entity displaying the 3D model -->
-      <a-entity
-        gltf-model='../nft2/book/scene.gltf'
-        scale="5 5 5"
-        position="150 300 -100"
-        >
-        </a-entity>
+      <a-entity id="model1" gltf-model='https://raw.githack.com/RyukinFengari4554/AR_Library/main/includes/similar%20books.glb' scale="20 20 20" position="590 600 -300" rotation="0 -90 0" event-set__mouseenter="scale: 25 25 25" event-set__mouseleave="scale: 20 20 20" cursor="rayOrigin: mouse">
+        <a-link href="https://www.youtube.com/" title="YouTube" target="_blank" onmousedown="window.open('https://www.youtube.com/', '_blank')"></a-link>
+      </a-entity>
+      <a-entity id="model2" gltf-model='https://raw.githack.com/RyukinFengari4554/AR_Library/main/includes/book%20location.glb' scale="20 20 20" position="700 600 -500" rotation="0 -90 0" event-set__mouseenter="scale: 25 25 25" event-set__mouseleave="scale: 20 20 20" cursor="rayOrigin: mouse">
+        <a-link href="https://www.wikipedia.org/" title="Wikipedia" target="_blank" onmousedown="window.open('https://www.wikipedia.org/', '_blank')"></a-link>
+      </a-entity>
+      <a-entity id="model3" gltf-model='https://raw.githack.com/RyukinFengari4554/AR_Library/main/includes/book%20information.glb' scale="20 20 20" position="900 600 -300" rotation="0 -90 0" event-set__mouseenter="scale: 25 25 25" event-set__mouseleave="scale: 20 20 20" cursor="rayOrigin: mouse">
+        <a-link href="https://github.com/" title="GitHub" target="_blank" onmousedown="window.open('https://github.com/', '_blank')"></a-link>
+      </a-entity>
     </a-nft>
-
-    <!-- Camera entity -->
-    <a-entity camera></a-entity>
-
   </a-scene>
 </body>
